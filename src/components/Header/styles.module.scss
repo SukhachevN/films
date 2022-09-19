@@ -1,0 +1,24 @@
+@import '../../utils/constants.scss';
+
+.header {
+  width: 100%;
+  margin: 0 auto;
+
+  &__links {
+    display: flex;
+    justify-content: center;
+    gap: toRem(20px);
+    padding: toRem(40px) 0;
+  }
+}
+
+.navLink {
+  text-decoration: none;
+  color: inherit;
+
+  &:hover,
+  &:focus,
+  &_match {
+    color: $indigo;
+  }
+}

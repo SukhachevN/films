@@ -1,0 +1,12 @@
+// colors
+$indigo: #3f51b5;
+
+// break points
+$extraLarge: 1200px;
+$large: 992px;
+$medium: 768px;
+$small: 300px;
+
+@function toRem($size) {
+  @return $size / 16px * 1rem;
+}
