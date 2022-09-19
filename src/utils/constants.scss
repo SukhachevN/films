@@ -1,5 +1,8 @@
 // colors
 $indigo: #3f51b5;
+$lightGray: #f1f1f4;
+$placeholderGray: #8e8e8e;
+$blue: #e8f0fe;
 
 // break points
 $extraLarge: 1200px;
@@ -8,5 +11,5 @@ $medium: 768px;
 $small: 300px;
 
 @function toRem($size) {
-  @return $size / 16px * 1rem;
+  @return calc($size / 16px * 1rem);
 }
