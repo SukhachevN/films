@@ -1,0 +1,62 @@
+@import '../../utils/constants.scss';
+
+@mixin search {
+  border: 1px solid $lightGray;
+  background: $blue;
+  padding: 0 toRem(12px);
+}
+
+.searchForm {
+  display: flex;
+  width: 85%;
+  justify-content: center;
+  margin: 0 auto;
+
+  &__input {
+    @include search;
+    width: 90%;
+    border-radius: toRem(3px) 0 0 toRem(3px);
+    height: toRem(40px);
+    font-size: toRem(16px);
+    text-overflow: ellipsis;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      border-color: $indigo;
+      border-width: 1px 0 1px 1px;
+    }
+
+    &:hover + .searchForm__label {
+      border-color: $indigo;
+      border-width: 1px 1px 1px 0px;
+    }
+  }
+
+  &__label {
+    display: flex;
+    border: 1px solid $lightGray;
+    border-radius: 0 toRem(3px) toRem(3px) 0;
+    position: relative;
+    background: $blue;
+    width: toRem(40px);
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.searchPlaceholder {
+  @include search;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  border-radius: toRem(3px);
+  min-height: toRem(40px);
+  text-align: center;
+  color: $placeholderGray;
+  margin: 0 auto;
+}
