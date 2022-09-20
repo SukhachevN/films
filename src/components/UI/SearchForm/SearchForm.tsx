@@ -1,11 +1,15 @@
 import { FaSearch } from 'react-icons/fa';
-import { debounce } from '../../utils/utils';
+import { useAppDispatch } from '../../../App/hooks';
+import { debounce } from '../../../utils/utils';
+import { fetchSearchFilms } from '../../Screens/Discover/slice';
 
 import styles from './styles.module.scss';
 
 const SearchForm = () => {
+  const dispatch = useAppDispatch();
+
   const debouncedSearch = debounce(
-    (search: string) => console.log(search), // TODO
+    (search: string) => dispatch(fetchSearchFilms(search)),
     300
   );
 

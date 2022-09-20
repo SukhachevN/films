@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Navigate, Routes } from 'react-router-dom';
-import { Header } from './components/Header';
-import { SearchForm, SearchPlaceholder } from './components/SearchForm';
+import { Discover } from '../components/Screens/Discover';
+import { Header } from '../components/UI/Header';
+import { SearchForm, SearchPlaceholder } from '../components/UI/SearchForm';
 
 import './styles.scss';
 
@@ -18,6 +19,7 @@ const App = () => {
             element={
               <>
                 <SearchForm />
+                <Discover />
               </>
             }
           />
