@@ -1,5 +1,5 @@
 @import-normalize;
-@import './utils/constants.scss';
+@import '../utils/constants.scss';
 
 * {
   margin: 0;
@@ -27,4 +27,12 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+.filmContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: toRem(20px);
+  padding: toRem(50px) 0;
 }
