@@ -1,5 +1,5 @@
 import { Link, useMatch } from 'react-router-dom';
-import cn from 'classnames';
+import cn from 'classNames';
 
 import styles from './styles.module.scss';
 
