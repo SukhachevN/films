@@ -1,10 +1,9 @@
 export interface IFilm {
   adult: boolean;
-  backdropPath: string | null;
   genreIds: number[];
   id: number;
   overview: string;
-  posterPath: string;
+  posterPath: string | null;
   releaseDate: string;
   title: string;
   video: boolean;

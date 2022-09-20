@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
 import { IFilm } from '../../../utils/interfaces';
-import { API_KEY, getResponse } from '../../../utils/utils';
+import { getResponse } from '../../../utils/utils';
+import { API_KEY } from '../../../utils/constants';
+import { RootState } from '../../../App/store';
 
 export interface DiscoverState {
   isLoading: boolean;
@@ -22,7 +23,10 @@ const initialState: DiscoverState = {
 export const fetchSearchFilms = createAsyncThunk(
   'fetchSearchFilms',
   async (filmName: string | undefined, { getState }) => {
-    const { lastSearch, page } = getState() as DiscoverState;
+    const {
+      discover: { lastSearch, page },
+    } = getState() as RootState;
+    console.log(page);
     const currentPage = lastSearch === filmName ? page : 1;
     const searchType = filmName ? 'search' : 'discover';
     const endPoint = filmName ? 'query=' + filmName : 'sort_by=popularity.desc';
@@ -38,21 +42,18 @@ export const discoverSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchSearchFilms.pending, (state) => {
+    builder.addCase(fetchSearchFilms.pending, (state, action) => {
+      const { arg } = action.meta;
       state.isLoading = true;
+      if (arg !== state.lastSearch) {
+        state.lastSearch = arg;
+        state.films = [];
+      }
     });
 
     builder.addCase(fetchSearchFilms.fulfilled, (state, action) => {
       const { page, totalPages, results } = action.payload;
-      const { arg } = action.meta;
-
-      if (arg !== state.lastSearch) {
-        state.lastSearch = arg;
-        state.films = results;
-      } else {
-        state.films.push(results);
-      }
-
+      state.films.push(...results);
       state.error = null;
       state.isLoading = false;
 
