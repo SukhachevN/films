@@ -1,11 +1,11 @@
 import { useFavorite, useWatchLater } from '../../../utils/selectors';
 import { FilmCard } from '../../UI/FilmCard';
 
-const Favorite = () => {
+const WatchLater = () => {
   const watchLater = useWatchLater();
   const favorite = useFavorite();
 
-  const films = Object.values(favorite);
+  const films = Object.values(watchLater);
 
   return (
     <main className='filmContainer'>
@@ -22,4 +22,4 @@ const Favorite = () => {
   );
 };
 
-export { Favorite };
+export { WatchLater };

@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
 import { memo } from 'react';
 import { imagePath } from '../../../utils/constants';
-import { IFilm } from '../../../utils/interfaces';
+import { ShorFilmInfo } from '../../../utils/interfaces';
 import imgPlaceholder from '../../../assets/img/imagePlaceholder.jpg';
 import { Like, Rating, WatchLater } from '../ActionButtons';
 
 import styles from './styles.module.scss';
 
-interface IFilmCard extends IFilm {
+interface IFilmCard extends ShorFilmInfo {
   isInFavorite: boolean;
   isInWatchLater: boolean;
 }
@@ -24,7 +24,7 @@ const FilmCard: React.FC<IFilmCard> = memo(
   }) => {
     const imgSrc = posterPath ? `${imagePath}${posterPath}` : imgPlaceholder;
 
-    const buttonProps = { id, title, posterPath, overview };
+    const buttonProps = { id, title, posterPath, overview, voteAverage };
 
     return (
       <div className={styles.film} aria-label={title} role='listitem'>

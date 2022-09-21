@@ -3,7 +3,7 @@ import { BsFillHeartFill } from 'react-icons/bs';
 import { useAppDispatch } from '../../../App/hooks';
 import { colors } from '../../../utils/constants';
 import { IActionButton } from '../../../utils/interfaces';
-import { handleFavorite } from '../../Screens/Favorite/slice';
+import { handleFavorite } from '../../Screens/Favorite';
 
 import styles from './styles.module.scss';
 

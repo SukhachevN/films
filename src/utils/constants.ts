@@ -7,3 +7,7 @@ export const colors = {
   red: '#ff0000',
   green: '#008000',
 };
+
+export const favoriteKey = 'favoriteFilms';
+
+export const watchLaterKey = 'watchLaterFilms';
