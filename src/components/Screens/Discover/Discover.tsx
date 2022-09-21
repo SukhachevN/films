@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
-import cn from 'classNames';
+import cn from 'classnames';
 import { useAppDispatch } from '../../../App/hooks';
-import { useDiscover } from '../../../utils/selectors';
+import { useDiscover, useFavorite } from '../../../utils/selectors';
 import { Spinner } from '../../UI/Spinner';
 import { fetchSearchFilms } from './slice';
 import { FilmCard } from '../../UI/FilmCard';
@@ -11,6 +11,7 @@ const Discover = () => {
   const dispatch = useAppDispatch();
 
   const { isLoading, films, error, lastSearch } = useDiscover();
+  const favorite = useFavorite();
 
   const isEmpty = !films.length;
 
@@ -25,7 +26,13 @@ const Discover = () => {
   return (
     <main className={cn('filmContainer', { ['filmContainer_empty']: isEmpty })}>
       {films.map(({ id, ...rest }) => (
-        <FilmCard key={id} id={id} {...rest} />
+        <FilmCard
+          key={id}
+          id={id}
+          {...rest}
+          isInFavorite={Boolean(favorite[id])}
+          isInWatchLater={false} // TODO
+        />
       ))}
       {isLoading && <Spinner />}
       <div ref={endListRef}></div>

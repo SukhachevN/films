@@ -9,3 +9,13 @@ export interface IFilm {
   video: boolean;
   voteAverage: number;
 }
+
+export type IShorFilmInfo = Pick<
+  IFilm,
+  'id' | 'title' | 'overview' | 'posterPath'
+>;
+
+export interface IActionButton extends IShorFilmInfo {
+  isActive: boolean;
+  isFilmScreen?: boolean;
+}

@@ -26,13 +26,12 @@ export const fetchSearchFilms = createAsyncThunk(
     const {
       discover: { lastSearch, page },
     } = getState() as RootState;
-    console.log(page);
     const currentPage = lastSearch === filmName ? page : 1;
     const searchType = filmName ? 'search' : 'discover';
     const endPoint = filmName ? 'query=' + filmName : 'sort_by=popularity.desc';
 
     return await getResponse(
-      `https://api.themoviedb.org/3/${searchType}/movie?api_key=${API_KEY}&${endPoint}}&page=${currentPage}`
+      `https://api.themoviedb.org/3/${searchType}/movie?api_key=${API_KEY}&${endPoint}&page=${currentPage}`
     );
   }
 );

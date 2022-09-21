@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Navigate, Routes } from 'react-router-dom';
 import { Discover } from '../components/Screens/Discover';
+import { Favorite } from '../components/Screens/Favorite';
 import { Header } from '../components/UI/Header';
 import { SearchForm, SearchPlaceholder } from '../components/UI/SearchForm';
 
@@ -32,6 +33,7 @@ const App = () => {
                 <SearchPlaceholder>
                   Here you will see films, which you add to favorite
                 </SearchPlaceholder>
+                <Favorite />
               </>
             }
           />

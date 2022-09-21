@@ -1,0 +1,25 @@
+@import '../../../utils/constants.scss';
+
+.actionButton {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.progressBar {
+  width: toRem(60px);
+  height: toRem(60px);
+  padding: toRem(5px) 0;
+  margin: 0 auto;
+
+  @media (min-width: $small) and (max-width: $medium) {
+    width: toRem(80px);
+    height: toRem(80px);
+  }
+
+  &_onFilmsScreen {
+    width: toRem(100px);
+    height: toRem(100px);
+    padding: 0;
+  }
+}
