@@ -13,7 +13,7 @@ export interface DiscoverState {
 }
 
 const initialState: DiscoverState = {
-  isLoading: false,
+  isLoading: true,
   error: null,
   films: [],
   page: 1,
@@ -26,14 +26,15 @@ export const fetchSearchFilms = createAsyncThunk(
     const {
       discover: { lastSearch, page },
     } = getState() as RootState;
-    console.log(page);
     const currentPage = lastSearch === filmName ? page : 1;
     const searchType = filmName ? 'search' : 'discover';
     const endPoint = filmName ? 'query=' + filmName : 'sort_by=popularity.desc';
 
-    return await getResponse(
-      `https://api.themoviedb.org/3/${searchType}/movie?api_key=${API_KEY}&${endPoint}}&page=${currentPage}`
+    const result = await getResponse(
+      `https://api.themoviedb.org/3/${searchType}/movie?api_key=${API_KEY}&${endPoint}&page=${currentPage}`
     );
+
+    return result;
   }
 );
 
@@ -60,8 +61,11 @@ export const discoverSlice = createSlice({
       if (page < totalPages) state.page = page + 1;
     });
 
-    builder.addCase(fetchSearchFilms.rejected, (state) => {
+    builder.addCase(fetchSearchFilms.rejected, (state, action) => {
       state.isLoading = false;
+      state.films = [];
+      state.page = 1;
+      state.error = action.error.message as string;
     });
   },
 });

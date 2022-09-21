@@ -9,3 +9,19 @@ export interface IFilm {
   video: boolean;
   voteAverage: number;
 }
+
+export type ShorFilmInfo = Pick<
+  IFilm,
+  'id' | 'title' | 'overview' | 'posterPath' | 'voteAverage'
+>;
+
+export interface IActionButton extends ShorFilmInfo {
+  isActive: boolean;
+  isFilmScreen?: boolean;
+}
+
+export type StoredFilms = Record<number, ShorFilmInfo>;
+
+export interface StoredFilmsState {
+  films: StoredFilms;
+}

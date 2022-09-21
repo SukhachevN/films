@@ -38,8 +38,14 @@ body {
   gap: toRem(20px);
   padding: toRem(50px) 0;
   height: 100%;
+}
 
-  &_empty {
-    height: 35%;
-  }
+.notFound {
+  width: 75%;
+  margin: auto;
+}
+
+.error {
+  color: $red;
+  align-self: flex-start;
 }
