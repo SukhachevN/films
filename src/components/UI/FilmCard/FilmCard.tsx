@@ -3,7 +3,7 @@ import { memo } from 'react';
 import { imagePath } from '../../../utils/constants';
 import { ShorFilmInfo } from '../../../utils/interfaces';
 import imgPlaceholder from '../../../assets/img/imagePlaceholder.jpg';
-import { Like, Rating, WatchLater } from '../ActionButtons';
+import { LikeButton, Rating, WatchLaterButton } from '../ActionButtons';
 
 import styles from './styles.module.scss';
 
@@ -38,9 +38,9 @@ const FilmCard: React.FC<IFilmCard> = memo(
           <p className={styles.film__p}>{overview}</p>
         </Link>
         <div className={styles.film__buttons}>
-          <Like isActive={isInFavorite} {...buttonProps} />
+          <LikeButton isActive={isInFavorite} {...buttonProps} />
           <Rating percentage={voteAverage * 10} />
-          <WatchLater isActive={isInWatchLater} {...buttonProps} />
+          <WatchLaterButton isActive={isInWatchLater} {...buttonProps} />
         </div>
       </div>
     );

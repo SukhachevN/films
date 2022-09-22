@@ -9,7 +9,7 @@ interface IWatchButton {
   videoKey: string;
 }
 
-const WatchVideo: React.FC<IWatchButton> = memo(
+const WatchVideoButton: React.FC<IWatchButton> = memo(
   ({ videoKey, isFilmScreen = false }) => (
     <button className={styles.actionButton}>
       <a href={`https://www.youtube.com/watch?v=${videoKey}`}>
@@ -22,4 +22,4 @@ const WatchVideo: React.FC<IWatchButton> = memo(
   )
 );
 
-export { WatchVideo };
+export { WatchVideoButton };
