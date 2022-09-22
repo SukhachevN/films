@@ -4,6 +4,7 @@ import {
   favoriteReducer,
   listenFavorite,
 } from '../components/Screens/Favorite';
+import { filmReducer } from '../components/Screens/Film/slice';
 import {
   listenWatchLater,
   watchLaterReducer,
@@ -16,6 +17,7 @@ export const store = configureStore({
     discover: discoverReducer,
     favorite: favoriteReducer,
     watchLater: watchLaterReducer,
+    film: filmReducer,
   },
   devTools: process.env.NODE_ENV !== 'production',
   middleware: (getDefaultMiddleware) =>

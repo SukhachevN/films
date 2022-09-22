@@ -1,7 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import camelcaseKeys from 'camelcase-keys';
 import { useEffect, useState } from 'react';
-import { ShorFilmInfo, StoredFilms, StoredFilmsState } from './interfaces';
+import { ShorFilmInfo, StoredFilms, IStoredFilmsState } from './interfaces';
 
 export const debounce = (fn: Function, ms: number) => {
   let timeoutId: ReturnType<typeof setTimeout>;
@@ -40,7 +40,7 @@ export const useIsVisible = (ref: React.RefObject<HTMLDivElement>) => {
 };
 
 export const handleStoredFilm = (
-  state: StoredFilmsState,
+  state: IStoredFilmsState,
   action: PayloadAction<ShorFilmInfo>
 ) => {
   const { id, ...rest } = action.payload;
@@ -52,7 +52,7 @@ export const handleStoredFilm = (
 };
 
 export const setStoredFilmsState = (
-  state: StoredFilmsState,
+  state: IStoredFilmsState,
   action: PayloadAction<StoredFilms>
 ) => {
   state.films = action.payload;

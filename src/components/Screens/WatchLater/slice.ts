@@ -1,10 +1,10 @@
 import { createListenerMiddleware, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../../App/store';
 import { watchLaterKey } from '../../../utils/constants';
-import { StoredFilmsState } from '../../../utils/interfaces';
+import { IStoredFilmsState } from '../../../utils/interfaces';
 import { handleStoredFilm, setStoredFilmsState } from '../../../utils/utils';
 
-const initialState: StoredFilmsState = {
+const initialState: IStoredFilmsState = {
   films: {},
 };
 

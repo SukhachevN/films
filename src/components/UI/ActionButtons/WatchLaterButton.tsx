@@ -7,7 +7,7 @@ import { handleWatchLater } from '../../Screens/WatchLater';
 
 import styles from './styles.module.scss';
 
-const WatchLater: React.FC<IActionButton> = memo(
+const WatchLaterButton: React.FC<IActionButton> = memo(
   ({ isActive, isFilmScreen = false, ...film }) => {
     const dispatch = useAppDispatch();
 
@@ -30,4 +30,4 @@ const WatchLater: React.FC<IActionButton> = memo(
   }
 );
 
-export { WatchLater };
+export { WatchLaterButton };

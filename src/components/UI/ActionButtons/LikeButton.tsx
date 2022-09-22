@@ -7,7 +7,7 @@ import { handleFavorite } from '../../Screens/Favorite';
 
 import styles from './styles.module.scss';
 
-const Like: React.FC<IActionButton> = memo(
+const LikeButton: React.FC<IActionButton> = memo(
   ({ isActive, isFilmScreen = false, ...film }) => {
     const dispatch = useAppDispatch();
 
@@ -29,4 +29,4 @@ const Like: React.FC<IActionButton> = memo(
   }
 );
 
-export { Like };
+export { LikeButton };

@@ -87,6 +87,7 @@
     @include overflow;
     padding-top: toRem(10px);
     -webkit-line-clamp: 4;
+    min-height: toRem(86px);
   }
 
   &__buttons {

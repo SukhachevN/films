@@ -14,7 +14,7 @@ const Rating: React.FC<IRating> = memo(
   ({ percentage, isFilmScreen = false }) => (
     <div
       className={cn(styles.progressBar, {
-        [styles.progressbar_onFilmScreen]: isFilmScreen,
+        [styles.progressBar_onFilmScreen]: isFilmScreen,
       })}
     >
       <CircularProgressbar value={percentage} text={`${percentage}%`} />
