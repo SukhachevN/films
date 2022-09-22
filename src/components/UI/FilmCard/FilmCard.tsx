@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { memo } from 'react';
-import { imagePath } from '../../../utils/constants';
+import { imagePathSmall } from '../../../utils/constants';
 import { ShorFilmInfo } from '../../../utils/interfaces';
 import imgPlaceholder from '../../../assets/img/imagePlaceholder.jpg';
 import { LikeButton, Rating, WatchLaterButton } from '../ActionButtons';
@@ -22,7 +22,9 @@ const FilmCard: React.FC<IFilmCard> = memo(
     isInFavorite,
     isInWatchLater,
   }) => {
-    const imgSrc = posterPath ? `${imagePath}${posterPath}` : imgPlaceholder;
+    const imgSrc = posterPath
+      ? `${imagePathSmall}${posterPath}`
+      : imgPlaceholder;
 
     const buttonProps = { id, title, posterPath, overview, voteAverage };
 

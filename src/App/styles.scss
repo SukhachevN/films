@@ -40,6 +40,10 @@ body {
   gap: toRem(20px);
   padding: toRem(50px) 0;
   height: 100%;
+
+  .error {
+    align-self: flex-start;
+  }
 }
 
 .notFound {
@@ -58,5 +62,4 @@ body {
 
 .error {
   color: $red;
-  align-self: flex-start;
 }

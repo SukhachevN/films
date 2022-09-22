@@ -5,21 +5,15 @@ import { colors } from '../../../utils/constants';
 import styles from './styles.module.scss';
 
 interface IWatchButton {
-  isFilmScreen?: boolean;
   videoKey: string;
 }
 
-const WatchVideoButton: React.FC<IWatchButton> = memo(
-  ({ videoKey, isFilmScreen = false }) => (
-    <button className={styles.actionButton}>
-      <a href={`https://www.youtube.com/watch?v=${videoKey}`}>
-        <BsDisplayFill
-          size={isFilmScreen ? '2.5rem' : '2rem'}
-          color={colors.darkGray}
-        />
-      </a>
-    </button>
-  )
-);
+const WatchVideoButton: React.FC<IWatchButton> = memo(({ videoKey }) => (
+  <button className={styles.actionButton}>
+    <a href={`https://www.youtube.com/watch?v=${videoKey}`}>
+      <BsDisplayFill size='2.5rem' color={colors.darkGray} />
+    </a>
+  </button>
+));
 
 export { WatchVideoButton };

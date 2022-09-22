@@ -8,6 +8,8 @@ export interface IFilm {
   title: string;
   video: boolean;
   voteAverage: number;
+  budget: number;
+  homepage: string | null;
 }
 
 export type ShorFilmInfo = Pick<
@@ -20,8 +22,8 @@ export interface IActionButton extends ShorFilmInfo {
   isFilmScreen?: boolean;
 }
 
-export type StoredFilms = Record<number, ShorFilmInfo>;
+export type StoredFilms = Record<number | string, ShorFilmInfo>;
 
-export interface StoredFilmsState {
+export interface IStoredFilmsState {
   films: StoredFilms;
 }

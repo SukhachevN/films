@@ -67,7 +67,7 @@ const App = () => {
               </>
             }
           />
-          <Route path='/film/:id' element={<Film />} />
+          <Route path='/film/:filmId' element={<Film />} />
           <Route
             path='*'
             element={

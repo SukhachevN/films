@@ -3,14 +3,14 @@ import { API_KEY } from '../../../utils/constants';
 import { IFilm } from '../../../utils/interfaces';
 import { getResponse } from '../../../utils/utils';
 
-export interface FilmState {
+interface IFilmState {
   film: IFilm | null;
   isLoading: boolean;
   error: string | null;
   videoKey: string | null;
 }
 
-const initialState: FilmState = {
+const initialState: IFilmState = {
   film: null,
   isLoading: false,
   error: null,
@@ -18,9 +18,10 @@ const initialState: FilmState = {
 };
 
 interface IFilmLink {
-  offical: boolean;
+  official: boolean;
   site: string;
-  type: 'Teaser' | 'Clip' | 'Featurette';
+  type: string;
+  key: string;
 }
 
 interface IFilmVideos {
@@ -69,9 +70,18 @@ export const filmSlice = createSlice({
       state.videoKey = null;
     });
 
-    builder.addCase(fetchFilmVideos.fulfilled, (state, action) => {
-      console.log(action.payload);
-    });
+    builder.addCase(
+      fetchFilmVideos.fulfilled,
+      (state, action: PayloadAction<IFilmVideos>) => {
+        const { results } = action.payload;
+        const officialTrailer = results.find(
+          ({ official, type, site }) =>
+            official && type === 'Trailer' && site === 'YouTube'
+        );
+
+        state.videoKey = officialTrailer?.key ?? null;
+      }
+    );
 
     builder.addCase(fetchFilmVideos.rejected, (state) => {
       state.videoKey = null;

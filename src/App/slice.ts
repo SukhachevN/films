@@ -3,11 +3,11 @@ import { initFavorite } from '../components/Screens/Favorite';
 import { initWatchLater } from '../components/Screens/WatchLater';
 import { favoriteKey, watchLaterKey } from '../utils/constants';
 
-export interface AppState {
+interface IAppState {
   isLoading: boolean;
 }
 
-const initialState: AppState = { isLoading: true };
+const initialState: IAppState = { isLoading: true };
 
 export const appSlice = createSlice({
   name: 'app',

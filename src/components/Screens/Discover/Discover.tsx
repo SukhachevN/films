@@ -25,8 +25,10 @@ const Discover = () => {
   const isEmpty = !isLoading && !error && !films.length;
 
   useEffect(() => {
-    !endOfData && isListEnded && dispatch(fetchSearchFilms(lastSearch));
-  }, [isListEnded, endOfData]);
+    const needLoadMore = !isLoading && !endOfData && isListEnded;
+
+    needLoadMore && dispatch(fetchSearchFilms(lastSearch));
+  }, [isListEnded, endOfData, isLoading]);
 
   return (
     <main className='filmContainer'>

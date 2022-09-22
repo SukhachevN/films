@@ -4,7 +4,7 @@ import { getResponse } from '../../../utils/utils';
 import { API_KEY } from '../../../utils/constants';
 import { RootState } from '../../../App/store';
 
-export interface DiscoverState {
+interface IDiscoverState {
   isLoading: boolean;
   error: string | null;
   films: IFilm[];
@@ -13,7 +13,7 @@ export interface DiscoverState {
   endOfData: boolean;
 }
 
-const initialState: DiscoverState = {
+const initialState: IDiscoverState = {
   isLoading: false,
   error: null,
   films: [],
@@ -54,7 +54,6 @@ export const discoverSlice = createSlice({
       if (page < totalPages) {
         state.page = page + 1;
       } else {
-        console.log(page, totalPages);
         state.endOfData = true;
       }
 
