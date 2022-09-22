@@ -27,7 +27,9 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
+  padding-bottom: toRem(50px);
 }
 
 .filmContainer {
@@ -43,6 +45,15 @@ body {
 .notFound {
   width: 75%;
   margin: auto;
+  display: flex;
+  justify-content: center;
+  &__img {
+    width: 50%;
+
+    @media (max-width: $medium) {
+      width: 100%;
+    }
+  }
 }
 
 .error {

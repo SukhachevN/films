@@ -28,7 +28,7 @@ const FilmCard: React.FC<IFilmCard> = memo(
 
     return (
       <div className={styles.film} aria-label={title} role='listitem'>
-        <Link to={`films/${id}`}>
+        <Link to={`/film/${id}`}>
           <img
             src={imgSrc}
             alt={`${title} film poster`}

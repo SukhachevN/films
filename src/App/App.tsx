@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
-import { BrowserRouter, Route, Navigate, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Navigate, Routes, Link } from 'react-router-dom';
 import { Discover } from '../components/Screens/Discover';
 import { Favorite } from '../components/Screens/Favorite';
+import { Film } from '../components/Screens/Film';
 import { WatchLater } from '../components/Screens/WatchLater';
 import { Header } from '../components/UI/Header';
 import { SearchForm, SearchPlaceholder } from '../components/UI/SearchForm';
@@ -9,6 +10,7 @@ import { Spinner } from '../components/UI/Spinner';
 import { useApp } from '../utils/selectors';
 import { useAppDispatch } from './hooks';
 import { startLoadApp } from './slice';
+import notFound from '../assets/img/notFound.png';
 
 import './styles.scss';
 
@@ -34,8 +36,6 @@ const App = () => {
         <Header />
         <Routes>
           <Route path='/' element={<Navigate to='/discover' replace />} />
-        </Routes>
-        <Routes>
           <Route
             path='/discover'
             element={
@@ -45,8 +45,6 @@ const App = () => {
               </>
             }
           />
-        </Routes>
-        <Routes>
           <Route
             path='/favorite'
             element={
@@ -58,8 +56,6 @@ const App = () => {
               </>
             }
           />
-        </Routes>
-        <Routes>
           <Route
             path='/watchLater'
             element={
@@ -69,6 +65,15 @@ const App = () => {
                 </SearchPlaceholder>
                 <WatchLater />
               </>
+            }
+          />
+          <Route path='/film/:id' element={<Film />} />
+          <Route
+            path='*'
+            element={
+              <Link to='/discover' className='notFound'>
+                <img src={notFound} alt='not found' className='notFound__img' />
+              </Link>
             }
           />
         </Routes>

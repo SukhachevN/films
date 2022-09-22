@@ -10,14 +10,16 @@ export interface DiscoverState {
   films: IFilm[];
   page: number;
   lastSearch: string | undefined;
+  endOfData: boolean;
 }
 
 const initialState: DiscoverState = {
-  isLoading: true,
+  isLoading: false,
   error: null,
   films: [],
   page: 1,
   lastSearch: undefined,
+  endOfData: false,
 };
 
 export const fetchSearchFilms = createAsyncThunk(
@@ -30,11 +32,9 @@ export const fetchSearchFilms = createAsyncThunk(
     const searchType = filmName ? 'search' : 'discover';
     const endPoint = filmName ? 'query=' + filmName : 'sort_by=popularity.desc';
 
-    const result = await getResponse(
+    return await getResponse(
       `https://api.themoviedb.org/3/${searchType}/movie?api_key=${API_KEY}&${endPoint}&page=${currentPage}`
     );
-
-    return result;
   }
 );
 
@@ -43,22 +43,31 @@ export const discoverSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchSearchFilms.pending, (state, action) => {
-      const { arg } = action.meta;
+    builder.addCase(fetchSearchFilms.pending, (state) => {
       state.isLoading = true;
-      if (arg !== state.lastSearch) {
-        state.lastSearch = arg;
-        state.films = [];
-      }
     });
 
     builder.addCase(fetchSearchFilms.fulfilled, (state, action) => {
       const { page, totalPages, results } = action.payload;
-      state.films.push(...results);
+      const { arg } = action.meta;
+
+      if (page < totalPages) {
+        state.page = page + 1;
+      } else {
+        console.log(page, totalPages);
+        state.endOfData = true;
+      }
+
+      if (arg !== state.lastSearch) {
+        state.lastSearch = arg;
+        state.films = results;
+        state.page = 2;
+      } else {
+        state.films.push(...results);
+      }
+
       state.error = null;
       state.isLoading = false;
-
-      if (page < totalPages) state.page = page + 1;
     });
 
     builder.addCase(fetchSearchFilms.rejected, (state, action) => {

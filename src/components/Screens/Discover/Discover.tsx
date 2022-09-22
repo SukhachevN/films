@@ -14,7 +14,7 @@ import notFound from '../../../assets/img/notFound.png';
 const Discover = () => {
   const dispatch = useAppDispatch();
 
-  const { isLoading, films, error, lastSearch } = useDiscover();
+  const { isLoading, films, error, lastSearch, endOfData } = useDiscover();
   const favorite = useFavorite();
   const watchLater = useWatchLater();
 
@@ -25,8 +25,8 @@ const Discover = () => {
   const isEmpty = !isLoading && !error && !films.length;
 
   useEffect(() => {
-    isListEnded && dispatch(fetchSearchFilms(lastSearch));
-  }, [isListEnded]);
+    !endOfData && isListEnded && dispatch(fetchSearchFilms(lastSearch));
+  }, [isListEnded, endOfData]);
 
   return (
     <main className='filmContainer'>
@@ -42,7 +42,7 @@ const Discover = () => {
       {isLoading && <Spinner />}
       {isEmpty && <img src={notFound} alt='not found' className='notFound' />}
       {error && <div className='error'>{error}</div>}
-      <div ref={endListRef}></div>
+      <div ref={endListRef} />
     </main>
   );
 };
