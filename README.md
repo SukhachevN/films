@@ -17,6 +17,7 @@
 
 ## Итог
 
+- Deploy: https://comforting-cocada-dd2501.netlify.app/
 - Обновлён старый проект для партфолию.
 - Улучшены навыки работы с TypeScript и Redux Toolkit.
 - Получен опыт использования css modules.
