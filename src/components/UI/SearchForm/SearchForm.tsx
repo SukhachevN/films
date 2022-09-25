@@ -9,7 +9,7 @@ const SearchForm = () => {
   const dispatch = useAppDispatch();
 
   const debouncedSearch = debounce(
-    (search: string) => dispatch(fetchSearchFilms(encodeURI(search))),
+    (search: string) => dispatch(fetchSearchFilms(encodeURIComponent(search))),
     300
   );
 
